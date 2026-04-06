@@ -1,0 +1,224 @@
+/* =========================================================================
+   PREMIUM UI ENHANCEMENTS
+   ========================================================================= */
+
+/* 1. GLASSMORPHISM & NAVBAR UPGRADE */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+body[data-theme="dark"] .navbar {
+    background: rgba(18, 18, 18, 0.85) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Base Glassmorphism for specific elements */
+.card, .skill-box, .creator-item {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+}
+body[data-theme="dark"] .card, 
+body[data-theme="dark"] .skill-box, 
+body[data-theme="dark"] .creator-item {
+    background: rgba(30, 30, 30, 0.95);
+}
+
+/* 2. SMOOTH ANIMATIONS INITIAL STATE (Scroll Reveal) */
+.section, .card, .skill-box, .creator-item, .timeline-item-flat {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.section.fade-in, .card.fade-in, .skill-box.fade-in, .creator-item.fade-in, .timeline-item-flat.fade-in, .hero {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Delay staggered child animations inside grid */
+.creator-projects-grid .creator-item:nth-child(1) { transition-delay: 0.1s; }
+.creator-projects-grid .creator-item:nth-child(2) { transition-delay: 0.2s; }
+.creator-projects-grid .creator-item:nth-child(3) { transition-delay: 0.3s; }
+.creator-projects-grid .creator-item:nth-child(4) { transition-delay: 0.4s; }
+
+/* 3. TYPOGRAPHY IMPROVEMENTS */
+body {
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+}
+
+.hero-name {
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1); 
+}
+
+.section-title {
+    position: relative;
+    display: inline-block;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.5rem;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--cyan), var(--yellow));
+    border-radius: 2px;
+}
+
+/* 4. SPACING & LAYOUT POLISH */
+.section {
+    padding: 6rem 1.5rem !important; /* Open up vertical breathing room */
+}
+.creator-projects-grid {
+    gap: 3rem !important;
+}
+
+/* Replace harsh section divider bounds with soft boundaries */
+hr, .divider {
+    border-color: rgba(0,0,0,0.05);
+}
+body[data-theme="dark"] hr, body[data-theme="dark"] .divider {
+    border-color: rgba(255,255,255,0.05);
+}
+
+/* 5. PROJECT CARDS ENHANCEMENT */
+.creator-item.card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    border-radius: 8px; /* Slightly softer corners for premium feel */
+}
+
+/* Gradient Top Edge glow */
+.creator-item.card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #66d9ef, #ffd93d, #a8e6cf, #ffb6b9);
+    opacity: 0.8;
+}
+
+.creator-item.card:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    /* Combine neo-brutalist solid shadow with a premium soft glow scatter */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1), 6px 6px 0 var(--border) !important;
+}
+
+/* 6. BUTTON IMPROVEMENTS */
+.btn-cta, .social-btn, .nav-cta, .nav-link {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.btn-cta:hover, .nav-cta:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1), 4px 4px 0 var(--border) !important;
+}
+.nav-link:hover {
+    color: var(--primary) !important;
+    transform: translateY(-2px);
+}
+
+/* 7. MAP UI ENHANCEMENT (CRITICAL) */
+
+/* Marker hover lift */
+.neo-marker {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.neo-marker:hover {
+    transform: scale(1.15) translateY(-5px) !important;
+    z-index: 1000 !important;
+}
+
+/* Popup animations & glassmorphism */
+.leaflet-popup {
+    animation: popIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.9) translateY(15px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.leaflet-popup-content-wrapper {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 2px solid var(--border) !important;
+    /* Premium glow mixed with brutalist shadow */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15), 4px 4px 0 var(--border) !important;
+    border-radius: 8px !important;
+    padding: 0 !important;
+}
+body[data-theme="dark"] .leaflet-popup-content-wrapper {
+    background: rgba(30, 30, 30, 0.95) !important;
+}
+
+.leaflet-popup-tip {
+    background: #fff !important;
+    border-top: 2px solid var(--border) !important;
+    border-left: 2px solid var(--border) !important;
+    box-shadow: none !important;
+}
+body[data-theme="dark"] .leaflet-popup-tip {
+    background: #1e1e1e !important;
+}
+
+/* Refined Popup Interior Content */
+.map-popup {
+    padding: 1.25rem 1.5rem !important;
+    line-height: 1.5;
+}
+.map-popup-country {
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    color: var(--text) !important;
+    margin-bottom: 0.75rem !important;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(0,0,0,0.05);
+}
+body[data-theme="dark"] .map-popup-country {
+    border-bottom-color: rgba(255,255,255,0.05);
+}
+.map-popup-company strong {
+    font-size: 1.05rem !important;
+    display: block;
+    margin-bottom: 0.15rem;
+    color: var(--cyan);
+}
+.map-popup-company span {
+    font-size: 0.9rem !important;
+    opacity: 0.8;
+}
+.map-popup-company small {
+    display: block;
+    opacity: 0.6;
+    margin-top: 0.2rem;
+}
+
+/* Soften Journey Timeline line */
+.timeline-list {
+    border-left: none !important; /* override old line */
+    position: relative;
+}
+.timeline-list::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 7px; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
+}
+body[data-theme="dark"] .timeline-list::before {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+}
