@@ -101,3 +101,7 @@ python3 -m http.server 8000
 ## License
 
 This project is **proprietary**. All rights reserved. You may browse the source code for inspiration, but copying, modifying, or redistributing any part of it without written permission is not allowed. See the [LICENSE](LICENSE) file for details.
+
+# ai-portfolio-interactive
+🚀 Interactive AI portfolio showcasing GenAI projects, system design, and full-stack engineering
+
