@@ -2,6 +2,11 @@
    PREMIUM UI ENHANCEMENTS
    ========================================================================= */
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
 /* 1. GLASSMORPHISM & NAVBAR UPGRADE */
 .navbar {
     position: sticky;
@@ -125,6 +130,10 @@ body[data-theme="dark"] hr, body[data-theme="dark"] .divider {
 .btn-cta:hover, .nav-cta:hover {
     transform: translateY(-3px) scale(1.03);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1), 4px 4px 0 var(--border) !important;
+}
+.social-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1), 2px 2px 0 var(--border) !important;
 }
 .nav-link:hover {
     color: var(--primary) !important;
